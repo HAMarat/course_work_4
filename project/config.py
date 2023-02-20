@@ -33,7 +33,8 @@ class TestingConfig(BaseConfig):
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
     SQLALCHEMY_ECHO = True
-    SQLALCHEMY_DATABASE_URI = "sqlite:///" + BASE_DIR.joinpath('project.db').as_posix()
+    SQLALCHEMY_DATABASE_URI = "sqlite:///movies.db"
+    # SQLALCHEMY_DATABASE_URI = "sqlite:///" + BASE_DIR.joinpath('project.db').as_posix()
 
 
 class ProductionConfig(BaseConfig):
@@ -46,13 +47,13 @@ class ConfigFactory:
 
     @classmethod
     def get_config(cls) -> Type[BaseConfig]:
-        if cls.flask_env == 'development':
-            return DevelopmentConfig
-        elif cls.flask_env == 'production':
-            return ProductionConfig
-        elif cls.flask_env == 'testing':
-            return TestingConfig
-        raise NotImplementedError
+        # if cls.flask_env == 'development':
+        return DevelopmentConfig
+        # elif cls.flask_env == 'production':
+        #     return ProductionConfig
+        # elif cls.flask_env == 'testing':
+        # TestingConfig
+        # raise NotImplementedError
 
 
 config = ConfigFactory.get_config()
