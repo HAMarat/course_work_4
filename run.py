@@ -1,8 +1,10 @@
 from project.config import config
-from project.dao.model.models import Genre
+from project.dao.model.genre import Genre
 from project.server import create_app, db
 
 app = create_app(config)
+
+app.run()
 
 
 @app.shell_context_processor
