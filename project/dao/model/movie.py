@@ -4,18 +4,6 @@ from sqlalchemy.orm import relationship
 from project.setup.db import models
 
 
-class Genre(models.Base):
-    __tablename__ = 'genre'
-
-    name = Column(String(100), unique=True, nullable=False)
-
-
-class Director(models.Base):
-    __tablename__ = 'director'
-
-    name = Column(String(100), unique=True, nullable=False)
-
-
 class Movie(models.Base):
     __tablename__ = 'movie'
 
@@ -28,13 +16,3 @@ class Movie(models.Base):
     genre = relationship("Genre")
     director_id = Column(Integer, ForeignKey("director.id"))
     director = relationship("Director")
-
-
-class User(models.Base):
-    __tablename__ = 'user'
-
-    email = Column(String(100), unique=True, nullable=False)
-    password = Column(String(100), nullable=False)
-    name = Column(String(100), nullable=False)
-    surname = Column(String(100))
-    favorite_genre = Column(String(100))
